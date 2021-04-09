@@ -4,9 +4,11 @@ console.log("this is my test")
 //     pick randomly from rock paper scissor
 //     return that result
 function computerPlay(){
-    let options = ['Rock', 'Paper', 'Scissors']
+    let options = ['ROCK', 'PAPER', 'SCISSORS']
     let choice = options[Math.floor(Math.random() * options.length)]
-    choice = choice.toUpperCase()
+    // choice = choice.toUpperCase()
+    // figured you'd get a chuckle out of the fact I almost put this in
+    console.log('Computer picked ' + choice)
     return choice
 }
 
@@ -28,7 +30,7 @@ function playerPlay(){
     let choice = prompt('Type either "Rock" "Paper" or "Scissors"', 'Nah, I like to lose')
     choice = choice.toUpperCase()
     if (choice == "ROCK" || choice == "PAPER"  || choice == "SCISSOR" || choice == "SCISSORS"){
-        playing = true
+        console.log('Player picked ' + choice)
         return choice
         // I should've kept the code in for review, but I had a hard time getting !== to work when attempting this in reverse.
         // this makes me wonder if the comparison was too strict without forcing type? but != didn't work either.
@@ -45,6 +47,27 @@ function playerPlay(){
 //         rock beats scissors
 //         scissors beats paper
 //     declares winner
+function playRound(computerSelection, playerSelection){
+    computerSelection = computerPlay
+    playerSelection = playerPlay
+    playerSelection()
+    computerSelection()
+    // if player is rock and pc is scissors, player wins
+    if ((playerSelection == 'PAPER' && computerSelection == 'ROCK') || (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'PAPER'))
+        {
+        console.log('Player Wins!')
+        }
+    // else if player and pc are the same, tie
+    else if ((playerSelection == 'ROCK' && computerSelection == 'ROCK') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'SCISSORS') || (playerSelection == 'PAPER' && computerSelection == 'PAPER'))
+        {
+            console.log("It's a Tie")
+        } 
+    // else player loses
+    else 
+        {
+            console.log('The Computer Wins!')
+        }
+    }
 
 // startMatch
 //     hold playerWins
