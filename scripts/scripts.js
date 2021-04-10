@@ -1,5 +1,10 @@
 console.log("this is my test")
 
+let pWins = 0
+let cWins = 0
+let noWins = 0
+let keepPlaying = true
+
 // computerPlay
 //     pick randomly from rock paper scissor
 //     return that result
@@ -79,33 +84,44 @@ function playRound(playerSelection, computerSelection){
 //     loop through playRound for five wins
 //     declare champion
 //     reset counters
-let pWins = 4
-let cWins = 4
-let noWins = 0
-let keepPlaying = true
+
+function resetGame() {
+    if (keepPlaying == false){
+        pWins = 0
+        cWins = 0
+        noWins = 0
+        keepPlaying = true
+    }
+}
+
+function logScore(){
+    console.log('player: ' + pWins + ' computer: ' + cWins + ' ties: ' + noWins)
+}
 
 function startMatch(){
     while (keepPlaying = true){
+        if (pWins >= 5){
+            keepPlaying = false
+            console.log("%cThe Game Has Finished! Player Won", "color:blue; font-size: 20px")
+            resetGame()
+            return 'score reset, play again?'
+        } else {keepPlaying = true} 
+        if (cWins >= 5){
+            keepPlaying = false
+            console.log("%cThe Game Has Finished! Computer Won", "color:red; font-size: 20px")
+            resetGame()
+            return 'score reset, play again?'
+        } else {keepPlaying = true} 
         let game = playRound(playerPlay, computerPlay)
         if (game == 'player'){
             pWins ++
-            console.log('player: ' + pWins + ' computer: ' + cWins + ' ties: ' + noWins)
+            logScore()
         } else if (game == 'computer'){
             cWins ++
-            console.log('player: ' + pWins + ' computer: ' + cWins + ' ties: ' + noWins)
+            logScore()
         } else {
             noWins ++
-            console.log('player: ' + pWins + ' computer: ' + cWins + ' ties: ' + noWins)
-        }
-        if (pWins >= 5){
-            keepPlaying = false
-        } else if (cWins >= 5){
-            keepPlaying = false
+            logScore()
         }
     }
-    pWins = 0
-    cWins = 0
-    noWins = 0
-    keepPlaying = true
-    console.log("%cThe Game Has Finished!", "color:blue; font-size: 20px")
 }
