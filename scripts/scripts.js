@@ -58,30 +58,23 @@ function playRound(playerSelection, computerSelection){
     // ^this is why everyone should have an arlen, thanks bro
     if ((pChoice == 'PAPER' && cChoice == 'ROCK') || (pChoice == 'ROCK' && cChoice == 'SCISSORS') || (pChoice == 'SCISSORS' && cChoice == 'PAPER')){
         console.log('Player Wins!!')
+        return playerWins
     } else if (pChoice === cChoice){
         console.log("It's a Tie")
+        return tieGame
     } else {
         console.log('Player Loses!!')
+        return computerWins
     }
-    // if player is rock and pc is scissors, player wins
-    // if ((playerSelection == 'PAPER' && computerSelection == 'ROCK') || (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'PAPER'))
-    //     {
-    //     console.log('Player Wins!')
-    //     }
-    // // else if player and pc are the same, tie
-    // else if ((playerSelection == 'ROCK' && computerSelection == 'ROCK') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'SCISSORS') || (playerSelection == 'PAPER' && computerSelection == 'PAPER'))
-    //     {
-    //         console.log("It's a Tie")
-    //     } 
-    // // else player loses
-    // else 
-    //     {
-    //         console.log('The Computer Wins!')
-    //     }
-    }
+}
 
 // startMatch
+//     add win/loss counters to the playRound returns
 //     hold playerWins
 //     hold computerWins
 //     loop through playRound for five wins
 //     declare champion
+//     reset counters
+function startMatch(){
+    
+}
