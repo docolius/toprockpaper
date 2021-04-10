@@ -29,7 +29,10 @@ function computerPlay(){
 function playerPlay(){
     let choice = prompt('Type either "Rock" "Paper" or "Scissors"', 'Nah, I like to lose')
     choice = choice.toUpperCase()
-    if (choice == "ROCK" || choice == "PAPER"  || choice == "SCISSOR" || choice == "SCISSORS"){
+    if (choice == 'SCISSOR'){
+        choice = 'SCISSORS'
+    }
+    if (choice == "ROCK" || choice == "PAPER"  || choice == "SCISSORS"){
         console.log('Player picked ' + choice)
         return choice
         // I should've kept the code in for review, but I had a hard time getting !== to work when attempting this in reverse.
@@ -47,26 +50,34 @@ function playerPlay(){
 //         rock beats scissors
 //         scissors beats paper
 //     declares winner
-function playRound(computerSelection, playerSelection){
-    computerSelection = computerPlay
-    playerSelection = playerPlay
-    playerSelection()
-    computerSelection()
+function playRound(playerSelection, computerSelection){
+    // computerSelection = computerPlay
+    // playerSelection = playerPlay
+    let pChoice = playerSelection() 
+    let cChoice = computerSelection()
+    // ^this is why everyone should have an arlen, thanks bro
+    if ((pChoice == 'PAPER' && cChoice == 'ROCK') || (pChoice == 'ROCK' && cChoice == 'SCISSORS') || (pChoice == 'SCISSORS' && cChoice == 'PAPER')){
+        console.log('Player Wins!!')
+    } else if (pChoice === cChoice){
+        console.log("It's a Tie")
+    } else {
+        console.log('Player Loses!!')
+    }
     // if player is rock and pc is scissors, player wins
-    if ((playerSelection == 'PAPER' && computerSelection == 'ROCK') || (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'PAPER'))
-        {
-        console.log('Player Wins!')
-        }
-    // else if player and pc are the same, tie
-    else if ((playerSelection == 'ROCK' && computerSelection == 'ROCK') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'SCISSORS') || (playerSelection == 'PAPER' && computerSelection == 'PAPER'))
-        {
-            console.log("It's a Tie")
-        } 
-    // else player loses
-    else 
-        {
-            console.log('The Computer Wins!')
-        }
+    // if ((playerSelection == 'PAPER' && computerSelection == 'ROCK') || (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'PAPER'))
+    //     {
+    //     console.log('Player Wins!')
+    //     }
+    // // else if player and pc are the same, tie
+    // else if ((playerSelection == 'ROCK' && computerSelection == 'ROCK') || (playerSelection == 'SCISSORS' || playerSelection == 'SCISSOR' && computerSelection == 'SCISSORS') || (playerSelection == 'PAPER' && computerSelection == 'PAPER'))
+    //     {
+    //         console.log("It's a Tie")
+    //     } 
+    // // else player loses
+    // else 
+    //     {
+    //         console.log('The Computer Wins!')
+    //     }
     }
 
 // startMatch
