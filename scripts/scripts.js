@@ -53,18 +53,22 @@ function playerPlay(){
 function playRound(playerSelection, computerSelection){
     // computerSelection = computerPlay
     // playerSelection = playerPlay
+    let round = null
     let pChoice = playerSelection() 
     let cChoice = computerSelection()
     // ^this is why everyone should have an arlen, thanks bro
     if ((pChoice == 'PAPER' && cChoice == 'ROCK') || (pChoice == 'ROCK' && cChoice == 'SCISSORS') || (pChoice == 'SCISSORS' && cChoice == 'PAPER')){
         console.log('Player Wins!!')
-        return playerWins
+        round = 'player'
+        return round
     } else if (pChoice === cChoice){
         console.log("It's a Tie")
-        return tieGame
+        round = 'tie'
+        return round
     } else {
         console.log('Player Loses!!')
-        return computerWins
+        round = 'computer'
+        return round
     }
 }
 
@@ -75,6 +79,33 @@ function playRound(playerSelection, computerSelection){
 //     loop through playRound for five wins
 //     declare champion
 //     reset counters
+let pWins = 4
+let cWins = 4
+let noWins = 0
+let keepPlaying = true
+
 function startMatch(){
-    
+    while (keepPlaying = true){
+        let game = playRound(playerPlay, computerPlay)
+        if (game == 'player'){
+            pWins ++
+            console.log('player: ' + pWins + ' computer: ' + cWins + ' ties: ' + noWins)
+        } else if (game == 'computer'){
+            cWins ++
+            console.log('player: ' + pWins + ' computer: ' + cWins + ' ties: ' + noWins)
+        } else {
+            noWins ++
+            console.log('player: ' + pWins + ' computer: ' + cWins + ' ties: ' + noWins)
+        }
+        if (pWins >= 5){
+            keepPlaying = false
+        } else if (cWins >= 5){
+            keepPlaying = false
+        }
+    }
+    pWins = 0
+    cWins = 0
+    noWins = 0
+    keepPlaying = true
+    console.log("%cThe Game Has Finished!", "color:blue; font-size: 20px")
 }
